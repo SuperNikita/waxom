@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+ <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<title>Waxom</title>
+
+<script type="text/javascript">
+var slideNow = 1;
+var slideCount = $('#slidewrapper').children().length;
+var slideInterval = 3000;
+var navBtnId = 0;
+var translateWidth = 0;
+
+$(document).ready(function() {
+    var switchInterval = setInterval(nextSlide, slideInterval);
+
+    $('#viewport').hover(function() {
+        clearInterval(switchInterval);
+    }, function() {
+        switchInterval = setInterval(nextSlide, slideInterval);
+    });
+
+    $('#next-btn').click(function() {
+        nextSlide();
+    });
+
+    $('#prev-btn').click(function() {
+        prevSlide();
+    });
+
+    $('.slide-nav-btn').click(function() {
+        navBtnId = $(this).index();
+
+        if (navBtnId + 1 != slideNow) {
+            translateWidth = -$('#viewport').width() * (navBtnId);
+            $('#slidewrapper').css({
+                'transform': 'translate(' + translateWidth + 'px, 0)',
+                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+            });
+            slideNow = navBtnId + 1;
+        }
+    });
+});
+
+
+function nextSlide() {
+    if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) {
+        $('#slidewrapper').css('transform', 'translate(0, 0)');
+        slideNow = 1;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow++;
+    }
+}
+
+function prevSlide() {
+    if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) {
+        translateWidth = -$('#viewport').width() * (slideCount - 1);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow = slideCount;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow - 2);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow--;
+    }
+}
+</script>
+
+</head>
+
+
+<body>
+  <div class="container">
+    <header class="header">
+
+
+
+
+
+
+
+      <div class="HeaderTop">
+        <a href="#"><img src="img/logo.png" class="logo_W" alt="waxom"></a>
+        <nav>
+          <a href="#">home</a>
+          <a href="#">About Us</a>
+          <a href="#">Portfolio</a>
+          <a href="#">Features</a>
+          <a href="#">blog</a>
+          <a href="#">Pricing</a>
+          <a href="#">Shortcodes</a>
+          <a href="#">Contact</a>
+          <img src="img/card.png" class="card" alt="корзина">
+          <img src="img/lupe.png" class="lupe" alt="лупа">
+        </nav>
+      <div class="clear"></div>
+      </div>
+      <div id="block-for-slider">
+        <div id="viewport">
+            <ul id="slidewrapper">
+                <li class="slide"><img src="https://hsto.org/files/8d4/b19/80d/8d4b1980d48c418090e2c4466d8c06e1.jpg" alt="1" class="slide-img"></li>
+                <li class="slide"><img src="https://hsto.org/files/ef1/3d7/97e/ef13d797e4c642c7a1d4b2b91f7ad7b3.jpg" alt="2" class="slide-img"></li>
+                <li class="slide"><img src="https://hsto.org/files/ec5/592/f1e/ec5592f1e814401eb38305682a8e88d4.jpg" alt="3" class="slide-img"></li>
+                <li class="slide"><img src="https://hsto.org/files/eda/61a/3c5/eda61a3c53db408d820643998d9acd81.jpg" alt="4" class="slide-img"></li>
+            </ul>
+
+            <div id="prev-next-btns">
+                <div id="prev-btn"></div>
+                <div id="next-btn"></div>
+            </div>
+
+            <ul id="nav-btns">
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+                <li class="slide-nav-btn"></li>
+            </ul>
+        </div>
+    </div>
+
+    </header>
+    <main>
+      <section class="discribe">
+
+
+        <div class="discribe-item">
+            <i class="icon"></i>
+            <h2>Web & App Design</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+
+          <div class="discribe-item">
+            <i class="icon"></i>
+            <h2>Web & App Design</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+          <div class="discribe-item">
+            <i class="icon"></i>
+            <h2>Web & App Design</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+          <div class="discribe-item">
+            <i class="icon"></i>
+            <h2>Web & App Design</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+          <div class="clear"></div>
+       
+      </section>
+      <section>
+
+        <article class="wiroyl">
+          <header>
+            <h2 class="textH2">Waxom is Realization of your Ideas.</h2>
+
+          </header>
+
+
+            <p class="textP">
+              nvestigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
+              Claritas est etiam processus dynam-<br>icus, qui sequitur mutationem consuetudium.
+            </p>
+
+
+          </article>
+
+
+          </section>
+
+<section>
+
+
+          <div class="purchese">
+          <div class="Ptext">
+            Waxom Multipurpose WordPress Theme<br>
+            Don't Forget to Rate the Template. Thanks so much!
+          </div>
+          <div class="pButton">
+            <p>PURCESE NOW</p>
+          </div>
+
+          </div>
+
+</section>
+<section class="gellery">
+  <h2>Our Latest Projects.</h2>
+  <p>Investigationes demonstraverunt lectores legere me lius quod ii</p>
+  <nav class="wraper">
+    <a href="#" class="box">All</a>
+    <a href="#" class="box">Web Design</a>
+    <a href="#" class="box">Mobile App</a>
+    <a href="#" class="box">Illustration</a>
+    <a href="#" class="box">Photography</a>
+
+  </nav>
+  <div class="clear">
+
+  </div>
+  <div class="wraperGellery">
+    <div class="box img1">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+    <div class="box img2">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+    <div class="box img3">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+    <div class="box img4">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+    <div class="box img5">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+    <div class="box img6">
+      <!-- <figure>
+          <img src="" alt="">
+          <figcaption>
+
+          </figcaption>
+      </figure> -->
+    </div>
+
+  </div>
+  <button type="button" class="btnLoad">Load More</button>
+</section>
+<video src="media/video.mp4" controls class="video1"></video>
+<section class="efmdev">
+  <h2></h2>
+  <p></p>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+<div class="img-tel">
+  <img src="#" alt="телефон">
+</div>
+
+</section>
+<div class="wraper3-statistic">
+  <div class="SBox SBox1">
+
+  </div>
+  <div class="SBox SBox2">
+
+  </div>
+  <div class="SBox SBox3">
+
+  </div>
+  <div class="SBox SBox4">
+
+  </div>
+  <div class="SBox SBox5">
+
+  </div>
+
+</div>
+<section class="RecentPosts">
+  <h2>Recent Posts.</h2>
+  <p>Investigationes demonstraverunt lectores legere me lius quod ii</p>
+
+
+<div class="wraper4Recent">
+  <div class="Rbox Rbox1">
+
+  </div>
+  <div class="Rbox Rbox1">
+
+  </div>
+  <div class="Rbox Rbox1">
+
+  </div>
+
+
+</div>
+<div class="slide">
+
+</div>
+</section>
+
+
+
+
+    </main>
+<footer>
+<div class="flexbox1">
+  <div class="flex1">
+
+  </div>
+  <div class="flex1">
+
+  </div>
+  <div class="flex1">
+
+  </div>
+  <div class="flex1">
+
+  </div>
+</div>
+<div class="flexbox2">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+</div>
+<div class="clear"></div>
+<div class="greed">
+<div class="Gbox Gbox1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci suscipit lobortis claritatem.</div>
+<div class="Gbox Gbox2"></div>
+<div class="Gbox Gbox3"></div>
+<div class="Gbox Gbox4"></div>
+<div class="Gbox Gbox5"></div>
+<div class="Gbox Gbox6"></div>
+<div class="Gbox Gbox7"></div>
+<div class="Gbox Gbox8">
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+
+</div>
+
+
+</div>
+
+</footer>
+</div>
+
+</body>
+</html>
